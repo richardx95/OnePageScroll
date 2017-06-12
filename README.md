@@ -14,6 +14,11 @@ With this framework you're able to scroll automatically to a selected section fr
 What is customisable?
 * The scrollspeed
 
+
+DEMO
+---
+<a href="">View demo</a>
+
 ---
 
 How To Implement?
