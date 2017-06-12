@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+    <head>
+    <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    </head>
+    
+
+    
+<link href="http://fonts.googleapis.com/css?family=Roboto+Slab:300" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<body>
+
+<nav>
+	<ul>
+    	<li><a href="#section1">section 1</a></li>
+        <li><a href="#section2">section 2</a></li>
+        <li><a href="#section3">section 3</a></li>
+        <li><a href="#section4">section 4</a></li>
+        <li><a href="#section5">section 5</a></li>
+    </ul>
+</nav>
+
+<section id="section1" class="ud_scroll"><h2>Scroll</h2></section>
+<section id="section2" class="ud_scroll"><h2>Like</h2></section>
+<section id="section3" class="ud_scroll"><h2>A</h2></section>
+<section id="section4" class="ud_scroll"><h2>F*cking</h2></section>
+<section id="section5" class="ud_scroll"><h2>Boss</h2></section>
+
+<script>(function ( $ ) {
+ 
+    $.fn.greenify = function( options ) {
+
+  
+ 
+        $('a[href*=\\#]').stop().click(function()
+        {
+            var settings = $.extend({
+            // These are the defaults.
+            speed: 1000
+        }, options );
+            
+            if(location.pathname.replace(/^\//,'') == this.pathname.replace (/^\//,'') && location.hostname === this.hostname)
+            {
+                var UD_HASH = this.hash;
+                var UD_TARGET = $(this.hash);
+                if (UD_TARGET.length)
+                {
+                    var UD_AFSTAND_TOP = UD_TARGET.offset().top;
+                    $('html,body').animate({scrollTop: UD_AFSTAND_TOP},settings.speed,function(){
+                        window.location.hahs = UD_HASH;
+                    });
+                    return false;
+                }
+                    
+                    
+                }
+            
+        });
+
+//        // This is the easiest way to have default options.
+      
+// 
+    };
+ 
+}( jQuery ));
+    
+$( "div" ).greenify({speed:1000});
+</script>
+    
+</body>
+</html>
+
+
+
