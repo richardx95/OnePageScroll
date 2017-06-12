@@ -15,72 +15,64 @@ What is customisable?
 * The scrollspeed
 
 
-DEMO
+Demo
 ---
-<a href="">View demo</a>
+<a href="http://richardcoopmans.com/school/scroll.html">View demo</a>
 
 ---
 
 How To Implement?
 ---
 
-Include this script tag at the bottom of your page, inside the body tag.
+Simply add the content you want to show on your page on the index.html page.
 
-```<script src="js/script.js"></script>```
 
-In this case the script.js is located inside the js folder. It's better if you also put your js files in a seperate folder, it creates a better overview.
 
-How To Customise?
+How To Customise Teh Scrollspeed?
 ---
 
-To edit the title, change this value ```var messagetitle = 'Message from The Study Sessions!';```
+Open the javascript file.
 
-To edit the message, change this value ```var messagebody = 'Click here to sign up for a session.';```
+```<script src="script.js"></script>```
 
-To change the icon, add a png or jpg image here ```var messageicon = 'images/icon.png';```
+At the bottom of the page you are able to edit the scroll speed, behind the colon.
 
-To change the link where the notification will guide you to, change this value ```var messagelink = 'reservation.html';```
+```$( "div" ).greenify({speed:1000});```
 
 Complete js Code
 ---
 
 ```
-// Notification will pop up after the page is loaded + x ms delay
-document.addEventListener('DOMContentLoaded', function(e){
-	
-	//--------------------------------------------------------//
-	//------------Customise the notification here-------------//
-	//--------------------------------------------------------//
-	
-	// Notification title
-	var messagetitle = 'Message from The Study Sessions!';
-	
-	// Notification Message
-	var messagebody = 'Click here to sign up for a session.';
-	
-	// Notification Icon
-	var messageicon = 'images/icon.png';
-	
-	// Notification onclick link
-	var messagelink = 'reservation.html';
-	
-	
-	
-	var popup;
-	e.preventDefault();
+(function ( $ ) {
+ 
+    $.fn.greenify = function( options ) {
+        $('a[href*=\\#]').stop().click(function()
+        {
+            var settings = $.extend({
+            // This is the default setting.
+            speed: 1000
+        }, options );
+            
+            if(location.pathname.replace(/^\//,'') == this.pathname.replace (/^\//,'') && location.hostname === this.hostname)
+            {
+                var UD_HASH = this.hash;
+                var UD_TARGET = $(this.hash);
+                if (UD_TARGET.length)
+                {
+                    var UD_AFSTAND_TOP = UD_TARGET.offset().top;
+                    $('html,body').animate({scrollTop: UD_AFSTAND_TOP},settings.speed,function(){
+                        window.location.hahs = UD_HASH;
+                    });
+                    return false;
+                }      
+            }   
+        });
+    };
+ 
+}( jQuery ));
 
-	if(Notification.permission === 'default'){
-		alert('please allow notifications.');
-	} else {
-		popup = new Notification(messagetitle,{
-			body: messagebody, icon: messageicon
-		});
-		
-		popup.onclick = function(){
-			window.open(messagelink, '_blank');
-		}
-	}
-}, false);
+// Here you can change the scrolling speed
+$( "div" ).greenify({speed:1000});
 ```
 
 ---
