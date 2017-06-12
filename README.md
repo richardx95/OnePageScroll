@@ -28,10 +28,10 @@ Simply add the content you want to show on your page on the index.html page.
 
 Put your content between the section tags.
 
-```<section id="section1" class="ud_scroll">
+````<section id="section1" class="ud_scroll">
 <h2>Scroll</h2>
 <p>Content you want to show on your page.</p>
-</section>```
+</section>````
 
 How To Customise Teh Scrollspeed?
 ---
