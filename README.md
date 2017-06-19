@@ -25,6 +25,12 @@ Installation
 ---
 
 Just download scroll.js, put it in the head of your page and call it.
+
+````html 
+<script type="text/javascript" src="js/script.js"></script>
+```` 
+
+
 Add an a href tag into the nav element. Make sure you make a div with the same id name.
 
 ````html 
