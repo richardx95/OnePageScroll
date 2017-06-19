@@ -27,7 +27,7 @@ Installation
 Just download scroll.js, put it in the head of your page and call it.
 
 ````html 
-<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="scroll.js"></script>
 ```` 
 
 
@@ -50,7 +50,8 @@ How To Implement?
 
 The easiest way to use scroll is putting it in a variable and calling the init function on it. It will target the element with class scroll on it.
 
-```javascript
+
+````html 
 //Initialize the first object without params so the default values are used
 <script>
 
@@ -58,13 +59,14 @@ The easiest way to use scroll is putting it in a variable and calling the init f
     scroll.init();
 
 </script>
-```
+````
 
 How To Customise The Scrollspeed?
 ---
 
 If you want however you can change the speed using a settings object
-```javascript
+
+````html 
 //Initialize the second object with a different speed so it goes...much...slower
 <script>
 
@@ -72,7 +74,7 @@ If you want however you can change the speed using a settings object
     scroll.init({speed: 1});
 
 </script>
-```
+````
 
 Complete js Code
 ---
