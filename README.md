@@ -29,7 +29,7 @@ Add an a href tag into the nav element. Make sure you make a div with the same i
 
 ````html 
 <nav>
- ...
+ 
     <a href="#first">First Page</a>
 </nav>
   ... 
@@ -46,54 +46,92 @@ The easiest way to use scroll is putting it in a variable and calling the init f
 
 ```javascript
 //Initialize the first object without params so the default values are used
-var scroll = Scroll();
-scroll.init();
+<script>
+
+    var scroll = Scroll();
+    scroll.init();
+
+</script>
 ```
 
-How To Customise Teh Scrollspeed?
+How To Customise The Scrollspeed?
 ---
 
-If you want however you can use a custom selector and change the gravity and the update speed using a settings object
+If you want however you can change the speed using a settings object
 ```javascript
 //Initialize the second object with a different speed so it goes...much...slower
-var scroll = Scroll();
-scroll.init({speed: 1});
+<script>
+
+    var scroll = Scroll();
+    scroll.init({speed: 1});
+
+</script>
 ```
 
 Complete js Code
 ---
 
 ```
-(function ( $ ) {
- 
-    $.fn.greenify = function( options ) {
-        $('a[href*=\\#]').stop().click(function()
-        {
-            var settings = $.extend({
-            // This is the default setting.
-            speed: 1000
-        }, options );
-            
-            if(location.pathname.replace(/^\//,'') == this.pathname.replace (/^\//,'') && location.hostname === this.hostname)
-            {
-                var UD_HASH = this.hash;
-                var UD_TARGET = $(this.hash);
-                if (UD_TARGET.length)
-                {
-                    var UD_AFSTAND_TOP = UD_TARGET.offset().top;
-                    $('html,body').animate({scrollTop: UD_AFSTAND_TOP},settings.speed,function(){
-                        window.location.hahs = UD_HASH;
-                    });
-                    return false;
-                }      
-            }   
-        });
-    };
- 
-}( jQuery ));
 
-// Here you can change the scrolling speed
-$( "div" ).greenify({speed:1000});
+var Scroll = function () {
+
+
+
+    var defaultSettings = {
+        selector: 'nav a',
+        event: 'click',
+        marginY: 0,
+        speed: 5,
+        scroller: null
+    }
+
+    var element;
+    
+    var destination;
+
+    var mergeObjects = function (object1, object2) {
+        for (var attrname in object1) {
+            if (object2.hasOwnProperty(attrname)) {
+                object1[attrname] = object2[attrname];
+            }
+        }
+    };
+
+    function initScroll(event) {
+        var element = document.querySelector(event.target.hash)
+        var destination = element.offsetTop;
+        defaultSettings.scroller = setInterval(function () {
+            defaultSettings.marginY = defaultSettings.marginY + defaultSettings.speed;
+            window.scrollTo(0, defaultSettings.marginY);
+            
+            if (defaultSettings.marginY >= destination) {
+            clearInterval(defaultSettings.scroller);
+            defaultSettings.marginY = 0;
+            }
+        }, 1);
+    }
+
+    window.onscroll = function () {
+        marginY = this.pageYOffset;
+    };
+
+    var init = function (settings) {
+        mergeObjects(defaultSettings, settings || {});
+       
+        var elements = document.querySelectorAll(defaultSettings.selector),
+            i;
+        //Loop door elements
+        for (i = 0; i < elements.length; i++) {
+            elements[i].addEventListener("click", function () { 
+            });
+            elements[i].addEventListener(defaultSettings.event, initScroll);    
+        };
+    };
+    return {
+        init: init
+    };
+};
+
 ```
 
 ---
