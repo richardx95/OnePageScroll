@@ -9,7 +9,7 @@ Made By Richard
 Intro
 ---
 
-With this framework you're able to scroll automatically to a selected section from the navbar.
+With this framework you're able to scroll smoothly to a selected section from the navbar.
 
 What is customisable?
 * The scrollspeed
@@ -21,34 +21,44 @@ Demo
 
 ---
 
+Installation
+---
+
+Just download scroll.js, put it in the head of your page and call it.
+Add an a href tag into the nav element. Make sure you make a div with the same id name.
+
+````html 
+<nav>
+ ...
+    <a href="#first">First Page</a>
+</nav>
+  ... 
+  
+<div id="first"> First page</div>
+
+</body> 
+```` 
+
 How To Implement?
 ---
 
-Simply add the content you want to show on your page on the index.html page.
+The easiest way to use scroll is putting it in a variable and calling the init function on it. It will target the element with class scroll on it.
 
-Put your content between the section tags.
-
-````html
-<section id="section1" class="ud_scroll">
-  ...
-  <h2>Scroll</h2>
-  <p>Content you want to show on your page.</p>
-    ...
-  </section>
-  ...
-</body>
-````
+```javascript
+//Initialize the first object without params so the default values are used
+var scroll = Scroll();
+scroll.init();
+```
 
 How To Customise Teh Scrollspeed?
 ---
 
-Open the javascript file.
-
-```<script src="script.js"></script>```
-
-At the bottom of the page you are able to edit the scroll speed, behind the colon.
-
-```$( "div" ).greenify({speed:1000});```
+If you want however you can use a custom selector and change the gravity and the update speed using a settings object
+```javascript
+//Initialize the second object with a different speed so it goes...much...slower
+var scroll = Scroll();
+scroll.init({speed: 1});
+```
 
 Complete js Code
 ---

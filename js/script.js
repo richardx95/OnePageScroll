@@ -1,3 +1,4 @@
+
 var Scroll = function () {
 
 
@@ -23,75 +24,36 @@ var Scroll = function () {
     };
 
     function initScroll(event) {
-       // event.preventDefault();
-        console.log('banaan');
-        console.log(event.target.hash)
         var element = document.querySelector(event.target.hash)
         var destination = element.offsetTop;
-        console.log('offset:',element.offsetTop);
-
         defaultSettings.scroller = setInterval(function () {
-             defaultSettings.marginY = defaultSettings.marginY + defaultSettings.speed;
-            
+            defaultSettings.marginY = defaultSettings.marginY + defaultSettings.speed;
             window.scrollTo(0, defaultSettings.marginY);
-
+            
             if (defaultSettings.marginY >= destination) {
             clearInterval(defaultSettings.scroller);
             defaultSettings.marginY = 0;
             }
-
-            
         }, 1);
-
-       
-
-        console.log('dest:', destination);
     }
 
     window.onscroll = function () {
         marginY = this.pageYOffset;
     };
 
-    function toTop() {
-        scroller = setTimeout(function () {
-            toTop();
-        }, 1);
-
-        marginY = marginY - speed;
-
-        if (marginY <= 0) {
-            clearTimeout(scroller);
-        }
-
-        //window.scroll(0, marginY);
-        
-    }
-
     var init = function (settings) {
         mergeObjects(defaultSettings, settings || {});
-        console.log(defaultSettings.speed);
        
         var elements = document.querySelectorAll(defaultSettings.selector),
             i;
         //Loop door elements
         for (i = 0; i < elements.length; i++) {
-           
-            //check de code van queryselector for is al goed gebruik console log.
-            elements[i].addEventListener("click", function () {
-                console.log("Hello World");
+            elements[i].addEventListener("click", function () { 
             });
-            
-            elements[i].addEventListener(defaultSettings.event, initScroll);
-        
-            //elements[i].addEventListener(defaultSettings.event,         initScroll(elements[i])) {
-                
-            };
-        
-
+            elements[i].addEventListener(defaultSettings.event, initScroll);    
+        };
     };
-
     return {
         init: init
     };
-
 };
