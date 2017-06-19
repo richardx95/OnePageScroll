@@ -1,37 +1,32 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-    <head>
+<head>
     <meta charset="utf-8">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    </head>
-<link href="http://fonts.googleapis.com/css?family=Roboto+Slab:300" rel="stylesheet" type="text/css">
-<!-- Link to stylesheet !-->
-<link rel="stylesheet" type="text/css" href="style.css">
-
+    <title>Smooth Scroll</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="js/script.js"></script>
+</head>
 <body>
-
-<!-- Navbar with sections --> 
-<nav>
-	<ul>
-    	<li><a href="#section1">section 1</a></li>
-        <li><a href="#section2">section 2</a></li>
-        <li><a href="#section3">section 3</a></li>
-        <li><a href="#section4">section 4</a></li>
-        <li><a href="#section5">section 5</a></li>
-    </ul>
-</nav>
-
-<!-- Sections where you can customize the h2 headers and put text between the section tags. -->
-<section id="section1" class="ud_scroll"><h2>Scroll</h2></section>
-<section id="section2" class="ud_scroll"><h2>Like</h2></section>
-<section id="section3" class="ud_scroll"><h2>A</h2></section>
-<section id="section4" class="ud_scroll"><h2>F*cking</h2></section>
-<section id="section5" class="ud_scroll"><h2>Boss</h2></section>
+    <nav>
+        <ul>
+            <li><a href="#first">First Page</a></li>
+            <li><a href="#second">Second Page</a></li>
+            <li><a href="#third">Third Page</a></li>
+            <li><a href="#fourth">Fourth Page</a></li>
+            <li><a href="#fifth">Fifth Page</a></li>
+        </ul>
+    </nav>
+    <a id="top" href="#">Back to top</a>
     
-<!-- Link to script -->    
-<script src="script.js"></script>
+    <div id="first"> First page</div>
+    <div id="second"> Second page</div>
+    <div id="third"> Third page</div>
+    <div id="fourth"> Fourth page</div>
+    <div id="fifth"> Fifth page</div>
+    
+    <script>
+        var scroll = new Scroll();
+        scroll.init({speed: 1});
+    </script>
 </body>
 </html>
-
-
-
